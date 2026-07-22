@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>جامعة المأمون | دليل القبول والأقساط 2025-2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Markazi+Text:wght@500;700&family=Tajawal:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy-950:#0a0d2e;
+    --navy-900:#0d1240;
+    --navy-800:#13184f;
+    --navy-700:#1a2166;
+    --gold-500:#c9a24a;
+    --gold-400:#dcbb6c;
+    --gold-100:#f4e8cc;
+    --ivory:#f7f3ea;
+    --ok-green:#3fae6a;
+    --no-red:#c9564a;
+    --line:rgba(201,162,74,0.28);
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;min-height:100%;}
+  html{background-color:var(--navy-950);}
+  body{
+    background-color:var(--navy-950);
+    background-image:
+      radial-gradient(circle at 15% 0%, rgba(201,162,74,0.08), transparent 40%),
+      radial-gradient(circle at 100% 30%, rgba(201,162,74,0.06), transparent 45%);
+    background-attachment:fixed;
+    background-repeat:no-repeat;
+    color:var(--ivory);
+    font-family:'Tajawal', sans-serif;
+    min-height:100vh;
+    line-height:1.6;
+  }
+  .display{font-family:'Markazi Text', serif;}
+
+  /* ===== decorative seal ===== */
+  .seal{
+    width:84px;height:84px;border-radius:50%;
+    border:2px solid var(--gold-500);
+    display:flex;align-items:center;justify-content:center;
+    position:relative;flex-shrink:0;
+    background:radial-gradient(circle, rgba(201,162,74,0.10), transparent 70%);
+  }
+  .seal::before{
+    content:"";position:absolute;inset:6px;border-radius:50%;
+    border:1px solid var(--gold-400);
+  }
+  .seal-inner{
+    text-align:center;color:var(--gold-100);
+  }
+  .seal-inner .book{font-size:22px;line-height:1;}
+  .seal-inner .yr{font-size:9px;letter-spacing:1px;color:var(--gold-400);margin-top:2px;}
+
+  /* ===== header ===== */
+  header{
+    border-bottom:1px solid var(--line);
+    padding:22px 6vw;
+    display:flex;align-items:center;justify-content:space-between;
+    gap:16px;flex-wrap:wrap;
+    position:sticky;top:0;z-index:50;
+    background:rgba(10,13,46,0.85);
+    backdrop-filter:blur(10px);
+  }
+  .brand{display:flex;align-items:center;gap:16px;}
+  .brand-text .name-ar{font-family:'Markazi Text',serif;font-size:28px;font-weight:700;color:var(--gold-100);}
+  .brand-text .name-en{font-size:11px;letter-spacing:3px;color:var(--gold-400);text-transform:uppercase;}
+  .founded{font-size:12px;color:var(--gold-400);text-align:left;}
+  .founded b{display:block;font-family:'Markazi Text',serif;font-size:22px;color:var(--gold-100);}
+
+  /* ===== hero ===== */
+  .hero{
+    padding:70px 6vw 40px;
+    max-width:1200px;margin:0 auto;
+    text-align:center;
+  }
+  .eyebrow{
+    display:inline-block;font-size:13px;letter-spacing:2px;color:var(--gold-500);
+    border:1px solid var(--line);padding:6px 18px;border-radius:30px;margin-bottom:22px;
+  }
+  .hero h1{
+    font-family:'Markazi Text',serif;font-weight:700;
+    font-size:clamp(34px,5vw,58px);
+    margin:0 0 14px;color:var(--ivory);
+  }
+  .hero h1 span{color:var(--gold-500);}
+  .hero p{color:#c9c9dd;font-size:16px;max-width:640px;margin:0 auto;}
+
+  /* ===== search panel ===== */
+  .search-panel{
+    max-width:900px;margin:36px auto 0;
+    background:linear-gradient(180deg, var(--navy-800), var(--navy-900));
+    border:1px solid var(--line);border-radius:18px;
+    padding:30px clamp(18px,4vw,42px);
+    box-shadow:0 20px 60px rgba(0,0,0,0.35);
+  }
+  .search-grid{
+    display:grid;grid-template-columns:repeat(3, 1fr);gap:14px;align-items:end;
+  }
+  @media(max-width:900px){.search-grid{grid-template-columns:1fr 1fr;}}
+  @media(max-width:520px){.search-grid{grid-template-columns:1fr;}}
+  .field label{display:block;font-size:12px;color:var(--gold-400);margin-bottom:8px;letter-spacing:.5px;}
+  .field input, .field select{
+    width:100%;padding:13px 14px;border-radius:10px;
+    border:1px solid rgba(201,162,74,0.35);
+    background:var(--navy-950);color:var(--ivory);font-family:inherit;font-size:15px;
+    outline:none;
+  }
+  .field input::placeholder{color:#868cb8;}
+  .field input:focus, .field select:focus{border-color:var(--gold-500);}
+  .btn-search{
+    padding:13px 26px;border-radius:10px;border:none;cursor:pointer;
+    background:linear-gradient(135deg, var(--gold-400), var(--gold-500));
+    color:var(--navy-950);font-weight:700;font-size:15px;
+    transition:transform .15s ease, box-shadow .15s ease;
+    white-space:nowrap;
+  }
+  .btn-search:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(201,162,74,0.35);}
+  .hint{font-size:12px;color:#aab0d6;margin-top:14px;text-align:center;}
+
+  /* ===== summary bar ===== */
+  .summary{
+    max-width:1100px;margin:26px auto 0;padding:0 6vw;
+    display:flex;
+    align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;
+  }
+  .summary .count{font-family:'Markazi Text',serif;font-size:22px;color:var(--gold-100);}
+  .summary .count b{color:var(--gold-500);font-size:28px;}
+  .legend{display:flex;gap:16px;font-size:12px;color:#c7cae8;}
+  .legend span{display:inline-flex;align-items:center;gap:6px;}
+  .dot{width:9px;height:9px;border-radius:50%;display:inline-block;}
+  .dot.ok{background:var(--ok-green);} .dot.no{background:var(--no-red);} .dot.na{background:#868cb8;}
+
+  /* ===== results ===== */
+  main{max-width:1100px;margin:0 auto;padding:20px 6vw 90px;}
+  .college-group{margin-top:34px;}
+  .college-title{
+    display:flex;align-items:center;gap:12px;
+    font-family:'Markazi Text',serif;font-size:24px;color:var(--gold-100);
+    padding-bottom:10px;border-bottom:1px solid var(--line);margin-bottom:16px;
+  }
+  .college-title::before{content:"";width:6px;height:6px;background:var(--gold-500);border-radius:50%;}
+
+  .cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px;}
+  .card{
+    background:var(--navy-900);border:1px solid var(--line);border-radius:14px;
+    padding:18px 20px;position:relative;overflow:hidden;
+    transition:transform .15s ease, border-color .15s ease;
+  }
+  .card:hover{transform:translateY(-3px);border-color:var(--gold-500);}
+  .card.eligible{border-color:rgba(63,174,106,0.55);}
+  .card.eligible::after{
+    content:"مؤهَّل";position:absolute;top:14px;right:-32px;
+    background:var(--ok-green);color:#04170b;font-size:11px;font-weight:700;
+    padding:3px 34px;transform:rotate(45deg);
+  }
+  .card-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:10px;}
+  .card h3{margin:0;font-size:16.5px;color:var(--ivory);font-weight:700;padding-left:0;}
+  .copy-btn{
+    flex-shrink:0;font-size:11.5px;padding:5px 11px;border-radius:20px;cursor:pointer;
+    background:rgba(201,162,74,0.12);border:1px solid rgba(201,162,74,0.4);color:var(--gold-400);
+    font-family:inherit;transition:all .15s ease;white-space:nowrap;
+  }
+  .copy-btn:hover{background:rgba(201,162,74,0.22);color:var(--gold-100);}
+  .copy-btn.copied{background:rgba(63,174,106,0.2);border-color:rgba(63,174,106,0.5);color:#5fd58a;}
+  .row{display:flex;justify-content:space-between;font-size:13px;color:#c7cae8;padding:5px 0;border-top:1px dashed rgba(255,255,255,0.06);}
+  .row:first-of-type{border-top:none;}
+  .row b{color:var(--gold-100);font-weight:600;}
+  .status-line{margin-top:12px;display:flex;gap:8px;flex-wrap:wrap;}
+  .pill{font-size:11.5px;padding:4px 10px;border-radius:20px;display:inline-flex;align-items:center;gap:5px;}
+  .pill.ok{background:rgba(63,174,106,0.15);color:#5fd58a;border:1px solid rgba(63,174,106,0.4);}
+  .pill.no{background:rgba(201,86,74,0.15);color:#e58579;border:1px solid rgba(201,86,74,0.4);}
+  .pill.na{background:rgba(150,155,195,0.22);color:#c0c3e6;border:1px solid rgba(150,155,195,0.5);}
+  .fee{color:var(--gold-400);font-weight:700;}
+  .track-note{font-size:11px;color:#a5aad2;margin-top:8px;}
+
+  .empty-state{
+    text-align:center;padding:60px 20px;color:#aab0d6;
+  }
+  .empty-state .display{font-size:30px;color:var(--gold-100);display:block;margin-bottom:10px;}
+
+  footer{
+    border-top:1px solid var(--line);padding:26px 6vw;
+    display:flex;justify-content:center;gap:26px;flex-wrap:wrap;
+    font-size:13px;color:#c0c3e6;
+  }
+  footer b{color:var(--gold-400);}
+  .disclaimer{
+    max-width:900px;margin:40px auto 0;padding:14px 20px;
+    border:1px dashed var(--line);border-radius:10px;
+    font-size:12.5px;color:#aab0d6;text-align:center;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="brand">
+    <div class="seal">
+      <div class="seal-inner">
+        <div class="book">📖</div>
+        <div class="yr">1990 . MU</div>
+      </div>
+    </div>
+    <div class="brand-text">
+      <div class="name-ar">جامعة المأمون</div>
+      <div class="name-en">University Al-Mamoon</div>
+    </div>
+  </div>
+  <div class="founded">تأسست سنة<b>1990</b></div>
+</header>
+
+<section class="hero">
+  <span class="eyebrow">دليل الطالب الرسمي · قبول 2025 – 2026</span>
+  <h1>اعرف <span>اختصاصك</span> بمعدلك</h1>
+  <p>أدخل معدلك في الإعدادية وفرعك الدراسي، وسيعرض لك الدليل فوراً الأقسام التي يحق لك التقديم عليها ضمن جامعة المأمون، مع القسط الدراسي وحالة القبول للدوام الصباحي والمسائي.</p>
+
+  <div class="search-panel">
+    <div class="search-grid">
+      <div class="field">
+        <label for="deptSearch">ابحث باسم القسم أو الكلية</label>
+        <input id="deptSearch" type="text" placeholder="مثال: هندسة، طب، حاسوب..." oninput="runSearch()">
+      </div>
+      <div class="field">
+        <label for="track">الفرع</label>
+        <select id="track" onchange="runSearch()">
+          <option value="all">كل الفروع</option>
+          <option value="احيائي">أحيائي</option>
+          <option value="علمي">علمي</option>
+          <option value="تطبيقي">تطبيقي</option>
+          <option value="ادبي">أدبي</option>
+          <option value="تجاري">تجاري</option>
+          <option value="صناعي">صناعي</option>
+          <option value="معهد اعداد المعلمين">معهد إعداد المعلمين</option>
+          <option value="مفوضية الشرطة">خريجو مفوضية الشرطة</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="subspec">التخصص الدقيق (للفرع الصناعي)</label>
+        <select id="subspec" onchange="runSearch()">
+          <option value="all">كل التخصصات</option>
+          <optgroup label="حاسوب وإلكترونيات">
+            <option value="حاسوب">صيانة وتجميع الحاسوب / الشبكات</option>
+            <option value="لكترونيك">الإلكترونيك والسيطرة</option>
+            <option value="اتصالات">الاتصالات</option>
+            <option value="تكنولوجيا الإعلام">تكنولوجيا الإعلام</option>
+          </optgroup>
+          <optgroup label="كهرباء وطاقة">
+            <option value="كهرباء">الكهرباء والقوى الكهربائية</option>
+            <option value="ميكاترون">الميكاترونيك</option>
+            <option value="جهزة الطبية">صيانة الأجهزة الطبية</option>
+            <option value="منظومات الليزر">صيانة منظومات الليزر</option>
+            <option value="المصاعد الكهربائية">صيانة المصاعد الكهربائية</option>
+            <option value="توليد الطاقة">توليد ونقل الطاقة الكهربائية</option>
+          </optgroup>
+          <optgroup label="بناء وإنشاءات">
+            <option value="بناء">البناء والرسم الهندسي والمساحة</option>
+          </optgroup>
+          <optgroup label="ميكانيك وصناعة">
+            <option value="ميكانيك">الميكانيك العام</option>
+            <option value="تكييف">التكييف والتبريد</option>
+            <option value="تكرير النفط">تكرير النفط ومعالجة الغاز</option>
+            <option value="سيارات">السيارات والمركبات</option>
+            <option value="لحام">اللحام وتشكيل المعادن</option>
+            <option value="نسيج">النسيج والغزل</option>
+          </optgroup>
+          <optgroup label="أخرى">
+            <option value="مراكز التدريب المهني">مراكز التدريب المهني / معهد السكك</option>
+          </optgroup>
+        </select>
+      </div>
+      <div class="field">
+        <label for="avg">المعدل الدراسي (من 100)</label>
+        <input id="avg" type="number" min="0" max="100" step="0.1" placeholder="مثال: 61.5" oninput="runSearch()">
+      </div>
+      <div class="field">
+        <label for="dawam">الدوام</label>
+        <select id="dawam" onchange="runSearch()">
+          <option value="all">صباحي ومسائي</option>
+          <option value="morning">صباحي فقط</option>
+          <option value="evening">مسائي فقط</option>
+        </select>
+      </div>
+      <button class="btn-search" onclick="runSearch()">🔍 عرض الأقسام</button>
+    </div>
+    <div class="hint">اترك المعدل فارغاً لعرض جميع الأقسام والأقساط الدراسية كاملة</div>
+  </div>
+</section>
+
+<div class="summary" id="summary">
+  <div class="count">عدد الأقسام المعروضة: <b id="countNum">0</b></div>
+  <div class="legend">
+    <span><i class="dot ok"></i> القبول متاح</span>
+    <span><i class="dot no"></i> المعدل أقل من الحد الأدنى</span>
+    <span><i class="dot na"></i> الحد غير منشور</span>
+  </div>
+</div>
+
+<main id="results"></main>
+
+<div class="disclaimer">
+  البيانات منقولة حرفياً من الإعلانات الرسمية لجامعة المأمون لقبول عام 2025-2026 وجداول الأقساط الداخلية. القبول النهائي يخضع لضوابط وزارة التعليم العالي والتنافس الفعلي بين المتقدمين، لذا يُنصح بمراجعة الجامعة مباشرة لتأكيد أي رقم.
+</div>
+
+<footer>
+  <span>📍 بغداد – الاسكان – شارع 14 رمضان</span>
+  <span>📞ثابت: <b>6609_7565</b></span>
+  <span>📷 انستغرام وفيسبوك: <b>almamonuciq</b></span>
+</footer>
+<div style="text-align:center;padding:14px 6vw 30px;font-size:11.5px;color:#868cb8;">
+  تصميم وتطوير: عبدالرحمن إبراهيم لطيف — طالب <b style="color:#c9a24a;">هندسة الأمن السيبراني</b> © 2026 جامعة المأمون
+</div>
+
+<script>
+/* ===================== DATA ===================== */
+/* tracks: [{name, morning(min score or null=not offered/not published), evening}] */
+const DATA = [
+  {college:"كلية طب الاسنان", dept:"طب الاسنان", fee:5500000,
+    tracks:[{name:"علمي / أحيائي", morning:89.5, evening:null}]},
+  {college:"كلية الصيدلة", dept:"الصيدلة", fee:5000000,
+    tracks:[{name:"علمي / أحيائي", morning:89.5, evening:null}]},
+  {college:"كلية الاعلام", dept:"الاعلام الرقمي", fee:1250000,
+    tracks:[{name:"صناعي (تكنولوجيا الإعلام) / إعدادية الفنون / فرع الفنون", morning:50.0, evening:null}]},
+  {college:"كلية الآداب", dept:"علم النفس السريري", fee:2000000,
+    tracks:[{name:"اعدادية السلامية / اعداديات الإسلامية التابعة لوزارة التربية / اعداديات الوقفين", morning:30.0, evening:null}]},
+  {college:"كلية القانون", dept:"القانون", fee:1750000,
+    tracks:[{name:"احيائي / علمي / تطبيقي / ادبي / خريجي مفوضية الشرطة / اعدادية الفنون", morning:64.5, evening:60.5}]},
+  {college:"كلية العلوم السياسية", dept:"العلوم السياسية والعلاقات الدولية الدبلوماسية", fee:1500000,
+    tracks:[{name:"احيائي / علمي / تطبيقي / ادبي / خريجي مفوضية الشرطة", morning:50.0, evening:50.0}]},
+  {college:"كلية التربية", dept:"اللغة الانكليزية", fee:1750000,
+    tracks:[{name:"احيائي / علمي / تطبيقي / ادبي / معهد اعداد المعلمين / اعدادية مفوضية الشرطة", morning:50.0, evening:50.0}]},
+  {college:"كلية التربية", dept:"تربية الرياضيات", fee:1750000,
+    tracks:[{name:"أحيائي / علمي / تطبيقي / علوم الرياضيات / العلوم / معهد اعداد المعلمين", morning:50.0, evening:50.0}]},
+  {college:"كلية التربية", dept:"اللغة العربية", fee:1250000,
+    tracks:[{name:"احيائي / تطبيقي / علمي / ادبي / معهد اعداد المعلمين / الاعدادية فرع الفنون / الاعداديات الإسلامية", morning:50.0, evening:null}]},
+  {college:"كلية التربية البدنية وعلوم الرياضة", dept:"التربية البدنية وعلوم الرياضة", fee:2250000,
+    tracks:[{name:"صناعي / تجاري / زراعي / معهد اعداد المعلمين / معهد السياحة والفندقة / اعدادية الفنون / خريجي مراكز التدريب المهني", morning:59.5, evening:57.5}]},
+  {college:"كلية التقنيات الهندسية", dept:"هندسة تقنيات الأمن السيبراني والحوسبة السحابية", fee:2500000,
+    tracks:[{name:"أحيائي / علمي / تطبيقي / صناعي (إلكترونيك وسيطرة إلكترون، حاسبات، شبكات الحاسوب + تكنولوجيا الإعلام) / حاسوب وتقنيات المعلومات (تجميع وصيانة الحاسوب، شبكات الحاسوب، أجهزة الهاتف والحاسوب المحمول + إدارة إلكترونية)", morning:61.5, evening:59.5}]},
+  {college:"كلية التقنيات الهندسية", dept:"هندسة تقنيات الكهرباء", fee:2500000,
+    tracks:[{name:"صناعي (كهرباء، القوى الكهربائية، مكائن كهربائية، ميكاترونيك والسيطرة، اتصالات، توليد الطاقة الكهربائية ونقلها، صيانة الأجهزة الطبية، صيانة منظومات الليزر، صيانة المصاعد الكهربائية، تكنولوجيا الإعلام) / حاسوب وتقنية المعلومات (تجميع وصيانة الحاسوب، شبكات الحاسوب، أجهزة الهاتف والحاسوب المحمول) / مراكز التدريب المهني ومعهد السكك (دراسة 3 سنوات + امتحان وزاري في الاختصاص المناظر)", morning:61.5, evening:59.5}]},
+  {college:"كلية التقنيات الهندسية", dept:"هندسة تقنيات الحاسوب", fee:2250000,
+    tracks:[{name:"صناعي (الإلكترونيك والسيطرة، الاتصالات، صيانة الحاسبات، كهرباء القوى الكهربائية، الأجهزة الطبية، تكنولوجيا الإعلام) / الحاسوب وتقنيات المعلومات (تجميع وصيانة الحاسوب، أجهزة الهاتف المحمول والحاسوب) / خريجو مراكز التدريب المهني (دراسة 3 سنوات + امتحان وزاري في الاختصاص المناظر)", morning:61.5, evening:59.5}]},
+  {college:"كلية التقنيات الهندسية", dept:"هندسة تقنيات الاجهزة الطبية", fee:2500000,
+    tracks:[{name:"صناعي (الإلكترونيك والسيطرة، الأجهزة الطبية)", morning:59.5, evening:57.5}]},
+  {college:"كلية التقنيات الهندسية", dept:"هندسة تقنيات البناء والانشاءات", fee:1800000,
+    tracks:[{name:"صناعي (بناء، رسم هندسي، مساحة) / مراكز التدريب المهني (دراسة 3 سنوات + امتحان وزاري في الاختصاص المناظر)", morning:61.5, evening:59.5}]},
+  {college:"كلية التقنيات الهندسية", dept:"هندسة تقنيات الوقود والطاقة", fee:2000000,
+    tracks:[{name:"أحيائي / تطبيقي / علمي / صناعي (ميكانيك، تكييف الهواء والتثليج، تكرير النفط ومعالجة الغاز، الصناعات البتروكيماوية)", morning:61.5, evening:59.5}]},
+  {college:"كلية التقنيات الهندسية", dept:"هندسة تقنيات ميكانيك القوى", fee:2000000,
+    tracks:[{name:"صناعي (تكنولوجيا صناعية، ميكاترونكس سيارات، خزف وزجاج ومعالجة المياه وشبكاته، طباعة، النسيج، تكييف الهواء، سيارات، نجارة، لحام وتشكيل معادن، صيانة المصاعد الكهربائية، مكننة زراعية، ميكانيك، تجميع مكائن، تشغيل، خراطة، قاطرات، قوى، فريزة، محركات، تدفئة، معادن، مكائن ومعدات، توربينات، إنتاج، تبريد وتكييف، غزل، نماذج، تكنولوجيا سباكة) / مراكز التدريب المهني ومعهد السكك (دراسة 3 سنوات + امتحان وزاري في الاختصاص المناظر)", morning:61.5, evening:59.5}]},
+  {college:"كلية الإدارة والاقتصاد", dept:"إدارة الاعمال", fee:1750000,
+    tracks:[{name:"التجارة / الإدارة الالكترونية / مفوضية الشرطة", morning:50.0, evening:50.0}]},
+  {college:"كلية الإدارة والاقتصاد", dept:"المحاسبة", fee:1750000,
+    tracks:[{name:"التجارة / احيائي / علمي / تطبيقي / ادبي / خريجي مفوضية الشرطة", morning:50.0, evening:50.0}]},
+  {college:"كلية الإدارة والاقتصاد", dept:"العلوم المالية والمصرفية", fee:1500000,
+    tracks:[{name:"التجارة / احيائي / علمي / تطبيقي / ادبي", morning:50.0, evening:50.0}]},
+  {college:"كلية التقنيات الصحية والطبية", dept:"تقنيات البصريات", fee:1500000,
+    tracks:[{name:"علمي / احيائي", morning:69.5, evening:64.5}]},
+  {college:"كلية التقنيات الصحية والطبية", dept:"تقنيات الكلية الصناعية", fee:1500000,
+    tracks:[{name:"علمي / احيائي", morning:69.5, evening:64.5}]},
+  {college:"كلية التقنيات الصحية والطبية", dept:"تقنيات صحة المجتمع", fee:2000000,
+    tracks:[{name:"علمي / احيائي", morning:69.5, evening:64.5}]},
+  {college:"كلية التقنيات الصحية والطبية", dept:"تقنيات الأشعة", fee:1500000,
+    tracks:[{name:"علمي / احيائي", morning:69.5, evening:64.5}]},
+  {college:"كلية التقنيات الصحية والطبية", dept:"تقنيات المختبرات الطبية", fee:1500000,
+    tracks:[{name:"علمي / احيائي", morning:69.5, evening:64.5}]},
+  {college:"كلية التقنيات الصحية والطبية", dept:"تقنيات العناية بالقلب", fee:2500000,
+    tracks:[{name:"علمي / احيائي", morning:64.5, evening:64.5}]},
+  {college:"كلية التقنيات الصحية والطبية", dept:"تقنيات العقم والإنجاب", fee:2500000,
+    tracks:[{name:"علمي / احيائي", morning:64.5, evening:64.5}]},
+  {college:"كلية التقنيات الصحية والطبية", dept:"تقنيات طب الطواري", fee:2500000,
+    tracks:[{name:"علمي / احيائي", morning:64.5, evening:64.5}]},
+  {college:"كلية التقنيات الصحية والطبية", dept:"الإدارة الصحية", fee:2000000,
+    tracks:[{name:"علمي / احيائي", morning:64.5, evening:64.5}]},
+  {college:"كلية التقنيات الصحية والطبية", dept:"العلاج الطبيعي", fee:2000000,
+    tracks:[{name:"احيائي / علمي", morning:64.5, evening:64.5}]},
+  {college:"كلية العلوم", dept:"علوم الأدلة الجنائية", fee:2500000,
+    tracks:[{name:"احيائي / علمي / تطبيقي", morning:56.5, evening:54.5}]},
+  {college:"كلية العلوم", dept:"علوم الفيزياء الطبية", fee:2000000,
+    tracks:[{name:"احيائي / علمي / تطبيقي", morning:56.5, evening:54.5}]},
+  {college:"كلية العلوم", dept:"علوم الحياة", fee:2000000,
+    tracks:[{name:"احيائي / علمي / تطبيقي", morning:56.5, evening:54.5}]},
+  {college:"كلية العلوم", dept:"علوم التحليلات المرضية", fee:2000000,
+    tracks:[{name:"احيائي / علمي / تطبيقي", morning:56.5, evening:54.5}]},
+  {college:"كلية العلوم", dept:"علوم الأمن السيبراني", fee:2000000,
+    tracks:[{name:"احيائي / علمي / تطبيقي", morning:56.5, evening:54.5}]},
+  {college:"كلية العلوم", dept:"علوم الانظمة الطبية الذكية", fee:2000000,
+    tracks:[{name:"احيائي / علمي / تطبيقي", morning:56.5, evening:54.5}]},
+  {college:"كلية الهندسة", dept:"هندسة الأمن السيبراني", fee:2500000,
+    tracks:[{name:"احيائي / علمي / تطبيقي", morning:60.5, evening:59.5}]},
+  {college:"كلية الهندسة", dept:"هندسة مدني", fee:2250000,
+    tracks:[{name:"علمي / تطبيقي", morning:62.5, evening:59.5}]},
+  {college:"كلية الهندسة", dept:"هندسة العمارة", fee:2000000,
+    tracks:[{name:"تطبيقي / علمي", morning:59.5, evening:58.5}]},
+  {college:"كلية الهندسة", dept:"هندسة الذكاء الاصطناعي", fee:2250000,
+    tracks:[{name:"احيائي / علمي / تطبيقي", morning:60.5, evening:59.5}]},
+  {college:"كلية الهندسة", dept:"هندسة الليزر والالكترونيات البصرية", fee:2250000,
+    tracks:[{name:"احيائي / علمي / تطبيقي", morning:60.5, evening:59.5}]},
+  {college:"كلية الهندسة", dept:"هندسة الطب الحياتي", fee:2000000,
+    tracks:[{name:"احيائي / علمي / تطبيقي", morning:70.5, evening:59.5}]},
+  {college:"كلية الهندسة", dept:"هندسة الاتصالات", fee:2000000,
+    tracks:[{name:"احيائي / تطبيقي / علمي", morning:60.5, evening:59.5}]},
+  {college:"كلية الهندسة", dept:"هندسة تكرار النفط والغاز", fee:2250000,
+    tracks:[{name:"احيائي / علمي / تطبيقي", morning:70.5, evening:59.5}]},
+  {college:"كلية الفنون الجميلة", dept:"التصميم الداخلي", fee:1500000,
+    tracks:[{name:"معهد الفنون الجميلة / اعدادية الفنون / الفنون التطبيقية", morning:50.0, evening:null}]},
+];
+
+/* ===================== RENDER LOGIC ===================== */
+function fmtFee(f){ return f ? f.toLocaleString('en-US') + ' د.ع / سنوياً' : 'غير معلن'; }
+
+function normalizeAr(s){
+  return String(s).replace(/[أإآ]/g, 'ا');
+}
+const TRACK_ALIASES = {
+  'تجاري': ['تجاري', 'التجارة', 'تجارة'],
+  'صناعي': ['صناعي'],
+  'ادبي': ['ادبي'],
+  'احيائي': ['احيائي'],
+  'علمي': ['علمي'],
+  'تطبيقي': ['تطبيقي'],
+  'معهد اعداد المعلمين': ['معهد اعداد المعلمين', 'معهد المعلمين'],
+  'مفوضية الشرطة': ['مفوضية الشرطة', 'خريجي مفوضية الشرطة', 'خريجو مفوضية الشرطة']
+};
+function trackMatches(trackName, selected){
+  if(selected === 'all') return true;
+  const normTrack = normalizeAr(trackName);
+  const aliases = TRACK_ALIASES[selected] || [selected];
+  return aliases.some(a => normTrack.includes(normalizeAr(a)));
+}
+const SPEC_ALIASES = {
+  'حاسوب': ['حاسوب', 'حاسبات'],
+  'لكترونيك': ['لكترونيك'],
+  'اتصالات': ['اتصالات'],
+  'تكنولوجيا الإعلام': ['تكنولوجيا الاعلام'],
+  'كهرباء': ['كهرباء'],
+  'ميكاترون': ['ميكاترون'],
+  'جهزة الطبية': ['جهزة الطبية'],
+  'منظومات الليزر': ['منظومات الليزر'],
+  'المصاعد الكهربائية': ['المصاعد الكهربائية'],
+  'توليد الطاقة': ['توليد الطاقة'],
+  'بناء': ['بناء'],
+  'ميكانيك': ['ميكانيك'],
+  'تكييف': ['تكييف'],
+  'تكرير النفط': ['تكرير النفط'],
+  'سيارات': ['سيارات'],
+  'لحام': ['لحام'],
+  'نسيج': ['نسيج', 'غزل'],
+  'مراكز التدريب المهني': ['مراكز التدريب المهني', 'معهد السكك']
+};
+function specMatches(trackName, selected){
+  if(selected === 'all') return true;
+  const normTrack = normalizeAr(trackName);
+  const aliases = SPEC_ALIASES[selected] || [selected];
+  return aliases.some(a => normTrack.includes(normalizeAr(a)));
+}
+function evalTrack(t, avg, dawam){
+  // returns {morningStatus, eveningStatus} each 'ok' | 'no' | 'na'
+  function status(min){
+    if(min === null || min === undefined) return 'na';
+    if(avg === null) return 'na';
+    return avg >= min ? 'ok' : 'no';
+  }
+  return { m: status(t.morning), e: status(t.evening) };
+}
+
+function pillHtml(label, min, stat){
+  const icon = stat === 'ok' ? '✔' : stat === 'no' ? '✘' : '—';
+  const cls = stat;
+  const text = min === null || min === undefined
+    ? `${label}: غير منشور`
+    : `${label}: حد أدنى ${min}`;
+  return `<span class="pill ${cls}">${icon} ${text}</span>`;
+}
+
+function buildCopyText(dep){
+  let lines = [];
+  lines.push('جامعة المأمون University Al-Mamoon');
+  lines.push('الكلية: ' + dep.college);
+  lines.push('القسم: ' + dep.dept);
+  lines.push('القسط الداخلي: ' + fmtFee(dep.fee));
+  lines.push('');
+  lines.push('تفاصيل القبول:');
+  dep.tracks.forEach(t => {
+    lines.push('• ' + t.name);
+    lines.push('   صباحي: ' + (t.morning !== null && t.morning !== undefined ? ('حد أدنى ' + t.morning) : 'غير منشور'));
+    lines.push('   مسائي: ' + (t.evening !== null && t.evening !== undefined ? ('حد أدنى ' + t.evening) : 'غير منشور'));
+  });
+  return lines.join('\n');
+}
+async function copyDeptInfo(idx, btn){
+  const text = (window._copyTexts || [])[idx];
+  if(!text) return;
+  try{
+    await navigator.clipboard.writeText(text);
+  }catch(e){
+    try{
+      const ta = document.createElement('textarea');
+      ta.value = text; ta.style.position='fixed'; ta.style.opacity='0';
+      document.body.appendChild(ta); ta.select();
+      document.execCommand('copy');
+      document.body.removeChild(ta);
+    }catch(e2){ alert('تعذّر النسخ التلقائي، يرجى النسخ يدوياً.'); return; }
+  }
+  const original = btn.innerHTML;
+  btn.innerHTML = '✓ تم النسخ';
+  btn.classList.add('copied');
+  setTimeout(() => { btn.innerHTML = original; btn.classList.remove('copied'); }, 1600);
+}
+
+function runSearch(){
+  const avgRaw = document.getElementById('avg').value;
+  const avg = avgRaw === '' ? null : parseFloat(avgRaw);
+  const track = document.getElementById('track').value;
+  const subspec = document.getElementById('subspec').value;
+  const dawam = document.getElementById('dawam').value;
+  const q = (document.getElementById('deptSearch').value || '').trim();
+
+  const results = document.getElementById('results');
+  results.innerHTML = '';
+  window._copyTexts = [];
+
+  // group by college in original order
+  const colleges = [...new Set(DATA.map(d => d.college))];
+  let totalEligible = 0;
+  let totalDisplayed = 0;
+  let anyCard = false;
+
+  colleges.forEach(college => {
+    if(q && !college.includes(q) && !DATA.some(d => d.college === college && d.dept.includes(q))) return;
+    const depts = DATA.filter(d => d.college === college && (!q || d.dept.includes(q) || d.college.includes(q)));
+    const cardsHtml = [];
+
+    depts.forEach(dep => {
+      const relevantTracks = dep.tracks.filter(t => trackMatches(t.name, track) && specMatches(t.name, subspec));
+      if(relevantTracks.length === 0) return;
+
+      let deptEligible = false;
+      let trackBlocks = '';
+
+      relevantTracks.forEach(t => {
+        const { m, e } = evalTrack(t, avg, dawam);
+        let showMorning = dawam !== 'evening';
+        let showEvening = dawam !== 'morning';
+        if((showMorning && m === 'ok') || (showEvening && e === 'ok')) deptEligible = true;
+
+        trackBlocks += `<div class="track-note">${t.name}</div><div class="status-line">`;
+        if(showMorning) trackBlocks += pillHtml('صباحي', t.morning, m);
+        if(showEvening) trackBlocks += pillHtml('مسائي', t.evening, e);
+        trackBlocks += `</div>`;
+      });
+
+      if(avg !== null && !deptEligible) {
+        // still show but visually as not eligible — do not skip, let user see full picture
+      }
+      if(deptEligible) totalEligible++;
+      totalDisplayed++;
+      anyCard = true;
+      const copyIdx = window._copyTexts.length;
+      window._copyTexts.push(buildCopyText(dep));
+      cardsHtml.push(`
+        <div class="card ${deptEligible ? 'eligible' : ''}">
+          <div class="card-head">
+            <h3>${dep.dept}</h3>
+            <button class="copy-btn" onclick="copyDeptInfo(${copyIdx}, this)" title="نسخ تفاصيل القبول">⧉ نسخ</button>
+          </div>
+          <div class="row"><span>القسط الداخلي</span><b class="fee">${fmtFee(dep.fee)}</b></div>
+          ${trackBlocks}
+        </div>
+      `);
+    });
+
+    if(cardsHtml.length > 0){
+      const group = document.createElement('div');
+      group.className = 'college-group';
+      group.innerHTML = `<div class="college-title">${college}</div><div class="cards">${cardsHtml.join('')}</div>`;
+      results.appendChild(group);
+    }
+  });
+
+  document.getElementById('summary').style.display = 'flex';
+  document.getElementById('countNum').textContent = totalDisplayed;
+
+  if(!anyCard){
+    results.innerHTML = `<div class="empty-state"><span class="display">لا توجد أقسام مطابقة</span>جرّب تغيير الفرع أو كلمة البحث.</div>`;
+  }
+}
+
+// initial render (all departments, no filter)
+runSearch();
+</script>
+
+</body>
+</html>
