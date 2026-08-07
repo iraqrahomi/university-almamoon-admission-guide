@@ -175,7 +175,12 @@
   .pill.no{background:rgba(201,86,74,0.15);color:#e58579;border:1px solid rgba(201,86,74,0.4);}
   .pill.na{background:rgba(150,155,195,0.22);color:#c0c3e6;border:1px solid rgba(150,155,195,0.5);}
   .fee{color:var(--gold-400);font-weight:700;}
-  .track-note{font-size:11px;color:#a5aad2;margin-top:8px;}
+  .channels-list{margin-top:10px;padding-top:8px;border-top:1px dashed rgba(255,255,255,0.08);}
+  .channel-block{margin-bottom:10px;}
+  .channel-block:last-child{margin-bottom:0;}
+  .channel-block .status-line{margin-top:4px;}
+  .channel-item{font-size:11.5px;color:#a5aad2;line-height:1.7;padding:2px 0;}
+  .channel-item b{color:var(--gold-400);font-weight:600;}
 
   .empty-state{
     text-align:center;padding:60px 20px;color:#aab0d6;
@@ -315,99 +320,220 @@
 </div>
 
 <script>
-/* ===================== DATA ===================== */
-/* tracks: [{name, morning(min score or null=not offered/not published), evening}] */
 const DATA = [
   {college:"كلية طب الاسنان", dept:"طب الاسنان", fee:5500000,
-    tracks:[{name:"علمي / أحيائي", morning:89.5, evening:null}]},
+    channels:[
+      {label:"التربية", detail:"علمي / احيائي", morning:84.5, evening:null}
+    ]},
   {college:"كلية الصيدلة", dept:"الصيدلة", fee:5000000,
-    tracks:[{name:"علمي / أحيائي", morning:89.5, evening:null}]},
+    channels:[
+      {label:"التربية", detail:"علمي / احيائي", morning:84.5, evening:null}
+    ]},
   {college:"كلية الاعلام", dept:"الاعلام الرقمي", fee:1250000,
-    tracks:[{name:"صناعي (تكنولوجيا الإعلام) / إعدادية الفنون / فرع الفنون", morning:50.0, evening:null}]},
-  {college:"كلية الآداب", dept:"علم النفس السريري", fee:2000000,
-    tracks:[{name:"اعدادية السلامية / اعداديات الإسلامية التابعة لوزارة التربية / اعداديات الوقفين", morning:30.0, evening:null}]},
+    channels:[
+      {label:"التربية / الصناعي", detail:"احيائي / علمي / تطبيقي / ادبي / تكنولوجيا الاعلام", morning:50.0, evening:50.0},
+      {label:"اعدادية الفنون", detail:"فرع الفنون", morning:50.0, evening:50.0},
+      {label:"باقي التخصصات", detail:"قناة الصحفيين + خريجي مفوضية الشرطة", morning:50.0, evening:50.0}
+    ]},
+  {college:"كلية الاداب", dept:"علم النفس السريري", fee:2000000,
+    channels:[
+      {label:"اعدادية اسلامية", detail:"اعداديات الاسلامية التابعة الى وزارة التربية (صباحي + مسائي) والاعداديات التابعة للوقفين الذين ادوا الامتحان التقويمي فقط", morning:50.0, evening:null},
+      {label:"اعدادية الفنون", detail:"فرع الفنون", morning:50.0, evening:null}
+    ]},
   {college:"كلية القانون", dept:"القانون", fee:1750000,
-    tracks:[{name:"احيائي / علمي / تطبيقي / ادبي / خريجي مفوضية الشرطة / اعدادية الفنون", morning:64.5, evening:60.5}]},
+    channels:[
+      {label:"التربية / اعدادية مفوضية الشرطة", detail:"احيائي / علمي / تطبيقي / ادبي / خريجي مفوضية الشرطة (مسائي حصراً)", morning:64.5, evening:60.5}
+    ]},
   {college:"كلية العلوم السياسية", dept:"العلوم السياسية والعلاقات الدولية الدبلوماسية", fee:1500000,
-    tracks:[{name:"احيائي / علمي / تطبيقي / ادبي / خريجي مفوضية الشرطة", morning:50.0, evening:50.0}]},
+    channels:[
+      {label:"التربية / اعدادية مفوضية الشرطة", detail:"احيائي / علمي / تطبيقي / ادبي / خريجي مفوضية الشرطة", morning:50.0, evening:null}
+    ]},
   {college:"كلية التربية", dept:"اللغة الانكليزية", fee:1750000,
-    tracks:[{name:"احيائي / علمي / تطبيقي / ادبي / معهد اعداد المعلمين / اعدادية مفوضية الشرطة", morning:50.0, evening:50.0}]},
+    channels:[
+      {label:"التربية / معهد اعداد المعلمين / اعدادية مفوضية الشرطة", detail:"احيائي / علمي / تطبيقي / ادبي / لغة انكليزية فقط / خريجي مفوضية الشرطة (مسائي حصراً)", morning:50.0, evening:50.0}
+    ]},
   {college:"كلية التربية", dept:"تربية الرياضيات", fee:1750000,
-    tracks:[{name:"أحيائي / علمي / تطبيقي / علوم الرياضيات / العلوم / معهد اعداد المعلمين", morning:50.0, evening:50.0}]},
+    channels:[
+      {label:"التربية / معهد اعداد المعلمين", detail:"احيائي / علمي / تطبيقي / علوم الرياضيات / العلوم", morning:50.0, evening:50.0}
+    ]},
   {college:"كلية التربية", dept:"اللغة العربية", fee:1250000,
-    tracks:[{name:"احيائي / تطبيقي / علمي / ادبي / معهد اعداد المعلمين / الاعدادية فرع الفنون / الاعداديات الإسلامية", morning:50.0, evening:null}]},
-  {college:"كلية التربية البدنية وعلوم الرياضة", dept:"التربية البدنية وعلوم الرياضة", fee:2250000,
-    tracks:[{name:"صناعي / تجاري / زراعي / معهد اعداد المعلمين / معهد السياحة والفندقة / اعدادية الفنون / خريجي مراكز التدريب المهني", morning:59.5, evening:57.5}]},
-  {college:"كلية التقنيات الهندسية", dept:"هندسة تقنيات الأمن السيبراني والحوسبة السحابية", fee:2500000,
-    tracks:[{name:"أحيائي / علمي / تطبيقي / صناعي (إلكترونيك وسيطرة إلكترون، حاسبات، شبكات الحاسوب + تكنولوجيا الإعلام) / حاسوب وتقنيات المعلومات (تجميع وصيانة الحاسوب، شبكات الحاسوب، أجهزة الهاتف والحاسوب المحمول + إدارة إلكترونية)", morning:61.5, evening:59.5}]},
+    channels:[
+      {label:"التربية", detail:"احيائي / تطبيقي / علمي / ادبي", morning:50.0, evening:null},
+      {label:"جهات اخرى", detail:"معهد اعداد المعلمين + (اللغة العربية، التربية الاسلامية واللغة العربية، لغة عربية واجتماعيات) + الاعدادية (فرع الفنون) + الاعداديات الاسلامية التابعة للتربية الاسلامية (صباحي ومسائي) + الاعداديات الاسلامية التابعة للوقفين (من ادو الامتحان التقويمي فقط) + مفوضية الشرطة", morning:50.0, evening:null}
+    ]},
+  {college:"كلية التربية البدنية وعلوم الرياضة", dept:"التربية البدنية وعلوم الرياضة", fee:1250000,
+    channels:[
+      {label:"التربية / مفوضية الشرطة", detail:"احيائي / علمي / تطبيقي / ادبي / خريجي مفوضية الشرطة (مسائي حصراً)", morning:50.0, evening:50.0},
+      {label:"الصناعي والتجاري", detail:"صناعي + تجاري + زراعي + معهد اعداد المعلمين + معهد السياحة والفندقة خريجي العام الدراسي (2020/2021) صعوداً + اعدادية الفنون التطبيقية + الحاسوب وتقنيات المعلومات + اعدادية فرع الفنون + خريجي مراكز التدريب المهني التي تكون مدة الدراسة فيها ثلاث سنوات والذين ادوا الامتحان الوزاري في الاختصاص المناظر + قناة الابطال الرياضيين", morning:50.0, evening:50.0}
+    ]},
+  {college:"كلية التقنيات الهندسية", dept:"هندسة تقنيات الامن السيبراني والحوسبة السحابية", fee:2250000,
+    channels:[
+      {label:"التربية", detail:"علمي / احيائي / تطبيقي", morning:59.5, evening:57.5},
+      {label:"الصناعي", detail:"الكترونيك وسيطرة الكترون / حاسبات / شبكات الحاسوب + تكنولوجيا الاعلام", morning:61.5, evening:59.5},
+      {label:"الحاسوب وتقنيات المعلومات", detail:"تجميع وصيانة الحاسوب / شبكات الحاسوب / اجهزة الهاتف والحاسوب المحمول + ادارة الكترونية", morning:61.5, evening:59.5}
+    ]},
   {college:"كلية التقنيات الهندسية", dept:"هندسة تقنيات الكهرباء", fee:2500000,
-    tracks:[{name:"صناعي (كهرباء، القوى الكهربائية، مكائن كهربائية، ميكاترونيك والسيطرة، اتصالات، توليد الطاقة الكهربائية ونقلها، صيانة الأجهزة الطبية، صيانة منظومات الليزر، صيانة المصاعد الكهربائية، تكنولوجيا الإعلام) / حاسوب وتقنية المعلومات (تجميع وصيانة الحاسوب، شبكات الحاسوب، أجهزة الهاتف والحاسوب المحمول) / مراكز التدريب المهني ومعهد السكك (دراسة 3 سنوات + امتحان وزاري في الاختصاص المناظر)", morning:61.5, evening:59.5}]},
+    channels:[
+      {label:"التربية", detail:"علمي / تطبيقي", morning:59.5, evening:57.5},
+      {label:"الصناعي", detail:"كهرباء / القوى الكهربائية / مكائن كهربائية / الكترونيك والسيطرة / ميكاترونيك / اتصالات / توليد الطاقة الكهربائية ونقلها / الاجهزة الطبية / صيانة منظومات الليزر / صيانة الحاسوب / صيانة المصاعد الكهربائية / تكنولوجيا الاعلام", morning:61.5, evening:59.5},
+      {label:"الحاسوب وتقنيات المعلومات", detail:"تجميع وصيانة الحاسوب / شبكات الحاسوب / اجهزة الهاتف والحاسوب المحمول", morning:61.5, evening:59.5},
+      {label:"مراكز التدريب المهني / معهد السكك", detail:"التي تكون مدة الدراسة فيها ثلاث سنوات والذين ادوا الامتحان الوزاري في الاختصاص المناظر", morning:61.5, evening:59.5}
+    ]},
   {college:"كلية التقنيات الهندسية", dept:"هندسة تقنيات الحاسوب", fee:2250000,
-    tracks:[{name:"صناعي (الإلكترونيك والسيطرة، الاتصالات، صيانة الحاسبات، كهرباء القوى الكهربائية، الأجهزة الطبية، تكنولوجيا الإعلام) / الحاسوب وتقنيات المعلومات (تجميع وصيانة الحاسوب، أجهزة الهاتف المحمول والحاسوب) / خريجو مراكز التدريب المهني (دراسة 3 سنوات + امتحان وزاري في الاختصاص المناظر)", morning:61.5, evening:59.5}]},
+    channels:[
+      {label:"التربية", detail:"علمي / تطبيقي / احيائي", morning:59.5, evening:57.5},
+      {label:"الصناعي", detail:"الالكترونيك والسيطرة / الاتصالات / صيانة الحاسبات / كهرباء / القوى الكهربائية / الاجهزة الطبية / تكنولوجيا الاعلام / الحاسبات / شبكات الحاسوب", morning:61.5, evening:59.5},
+      {label:"الحاسوب وتقنيات المعلومات", detail:"تجميع وصيانة الحاسوب، شبكات الحاسوب، اجهزة الهاتف والحاسوب المحمول (+ خريجي مراكز التدريب المهني الذي تكون مدة الدراسة فيها ثلاثة سنوات والذين ادوا الامتحان الوزاري في الاختصاص المناظر)", morning:61.5, evening:59.5}
+    ]},
   {college:"كلية التقنيات الهندسية", dept:"هندسة تقنيات الاجهزة الطبية", fee:2500000,
-    tracks:[{name:"صناعي (الإلكترونيك والسيطرة، الأجهزة الطبية)", morning:59.5, evening:57.5}]},
+    channels:[
+      {label:"التربية", detail:"علمي / احيائي / تطبيقي", morning:59.5, evening:57.5},
+      {label:"الصناعي", detail:"الالكترونيك والسيطرة (الكترون) ، الاجهزة الطبية", morning:61.5, evening:59.5}
+    ]},
   {college:"كلية التقنيات الهندسية", dept:"هندسة تقنيات البناء والانشاءات", fee:1800000,
-    tracks:[{name:"صناعي (بناء، رسم هندسي، مساحة) / مراكز التدريب المهني (دراسة 3 سنوات + امتحان وزاري في الاختصاص المناظر)", morning:61.5, evening:59.5}]},
+    channels:[
+      {label:"التربية", detail:"علمي / تطبيقي", morning:59.5, evening:null},
+      {label:"مراكز التدريب المهني / الصناعي", detail:"مراكز التدريب المهني / معهد السكك الذي تكون مدة الدراسة فيه ثلاث سنوات والذين ادوا الامتحان الوزاري في الاختصاص المناظر / بناء / رسم هندسي / المساحة", morning:61.5, evening:null}
+    ]},
   {college:"كلية التقنيات الهندسية", dept:"هندسة تقنيات الوقود والطاقة", fee:2000000,
-    tracks:[{name:"أحيائي / تطبيقي / علمي / صناعي (ميكانيك، تكييف الهواء والتثليج، تكرير النفط ومعالجة الغاز، الصناعات البتروكيماوية)", morning:61.5, evening:59.5}]},
+    channels:[
+      {label:"التربية", detail:"احيائي، تطبيقي، علمي", morning:59.5, evening:null},
+      {label:"الصناعي", detail:"(ميكانيك، تكييف الهواء والتثليج، تكرير النفط ومعالجة الغاز صناعات بيتروكيمياوية، الصناعات الكيمياوية)", morning:61.5, evening:null}
+    ]},
   {college:"كلية التقنيات الهندسية", dept:"هندسة تقنيات ميكانيك القوى", fee:2000000,
-    tracks:[{name:"صناعي (تكنولوجيا صناعية، ميكاترونكس سيارات، خزف وزجاج ومعالجة المياه وشبكاته، طباعة، النسيج، تكييف الهواء، سيارات، نجارة، لحام وتشكيل معادن، صيانة المصاعد الكهربائية، مكننة زراعية، ميكانيك، تجميع مكائن، تشغيل، خراطة، قاطرات، قوى، فريزة، محركات، تدفئة، معادن، مكائن ومعدات، توربينات، إنتاج، تبريد وتكييف، غزل، نماذج، تكنولوجيا سباكة) / مراكز التدريب المهني ومعهد السكك (دراسة 3 سنوات + امتحان وزاري في الاختصاص المناظر)", morning:61.5, evening:59.5}]},
-  {college:"كلية الإدارة والاقتصاد", dept:"إدارة الاعمال", fee:1750000,
-    tracks:[{name:"التجارة / الإدارة الالكترونية / مفوضية الشرطة", morning:50.0, evening:50.0}]},
-  {college:"كلية الإدارة والاقتصاد", dept:"المحاسبة", fee:1750000,
-    tracks:[{name:"التجارة / احيائي / علمي / تطبيقي / ادبي / خريجي مفوضية الشرطة", morning:50.0, evening:50.0}]},
-  {college:"كلية الإدارة والاقتصاد", dept:"العلوم المالية والمصرفية", fee:1500000,
-    tracks:[{name:"التجارة / احيائي / علمي / تطبيقي / ادبي", morning:50.0, evening:50.0}]},
+    channels:[
+      {label:"التربية", detail:"احيائي، علمي، تطبيقي", morning:59.5, evening:57.5},
+      {label:"الصناعي", detail:"(تكنولوجيا صناعية، ميكاترونكس سيارات، خزف وزجاج، و معالجة المياه وشبكاته، طباعة، النسيج، تكييف الهواء، سيارات، نجارة، لحام وتشكيل معادن (المعادن) صيانة المصاعد الكهربائية، مكننه زراعية، ميكانيك، ادوات، تجميع مكائن، تشغيل، خراطه، قاطرات، قوى، فريزة، محركات، تدفئة، معادن، مكائن ومعدات، مضخات، وتوربينات، انتاج، تبريد وتكييف، نماذج، غزل، تكنولوجيا سباكه)", morning:61.5, evening:59.5},
+      {label:"خريجي مراكز التدريب المهني", detail:"معاهد السكك الذي تكون مدة الدراسة فيها ثلاثة سنوات والذين ادوا الامتحان الوزاري في الاختصاص المناظر", morning:61.5, evening:59.5}
+    ]},
+  {college:"كلية الادارة والاقتصاد", dept:"ادارة الاعمال", fee:1750000,
+    channels:[
+      {label:"التربية / التجارة / مفوضية الشرطة", detail:"احيائي / علمي / تطبيقي / ادبي / عام، ادارة المخازن، الاقتصاد، الادارة / خريجي مفوضية الشرطة (مسائي حصراً)", morning:50.0, evening:50.0},
+      {label:"الحاسوب وتقنيات المعلومات", detail:"الادارة الالكترونية", morning:50.0, evening:50.0}
+    ]},
+  {college:"كلية الادارة والاقتصاد", dept:"المحاسبة", fee:1750000,
+    channels:[
+      {label:"التربية / مفوضية الشرطة / التجارة", detail:"احيائي / علمي / تطبيقي / ادبي / خريجي مفوضية الشرطة (مسائي حصراً) / عام، المحاسبة", morning:50.0, evening:50.0}
+    ]},
+  {college:"كلية الادارة والاقتصاد", dept:"العلوم المالية والمصرفية", fee:1500000,
+    channels:[
+      {label:"التربية / التجارة", detail:"احيائي / علمي / تطبيقي / ادبي / الاختصاص المناظر فقط (عام، المحاسبة، ادارة عامة)", morning:50.0, evening:50.0}
+    ]},
+  {college:"كلية الادارة والاقتصاد", dept:"اقتصاديات النفط والغاز", fee:1750000,
+    channels:[
+      {label:"التربية / التجارة", detail:"علمي، احيائي، تطبيقي، ادبي / التجارة (عام، اقتصاد، ادارة، محاسبة) + مفوضية الشرطة", morning:50.0, evening:null}
+    ]},
+  {college:"كلية الادارة والاقتصاد", dept:"التدقيق والرقابة الداخلية", fee:1500000,
+    channels:[
+      {label:"التربية", detail:"علمي، احيائي، تطبيقي، ادبي", morning:50.0, evening:null}
+    ]},
+  {college:"كلية التقنيات الصحية والطبية", dept:"تقنيات التخدير", fee:2750000,
+    channels:[
+      {label:"التربية", detail:"علمي، احيائي", morning:69.5, evening:64.5}
+    ]},
   {college:"كلية التقنيات الصحية والطبية", dept:"تقنيات البصريات", fee:1500000,
-    tracks:[{name:"علمي / احيائي", morning:69.5, evening:64.5}]},
+    channels:[
+      {label:"التربية", detail:"علمي، احيائي", morning:69.5, evening:null}
+    ]},
   {college:"كلية التقنيات الصحية والطبية", dept:"تقنيات الكلية الصناعية", fee:1500000,
-    tracks:[{name:"علمي / احيائي", morning:69.5, evening:64.5}]},
+    channels:[
+      {label:"التربية", detail:"علمي، احيائي", morning:69.5, evening:null}
+    ]},
   {college:"كلية التقنيات الصحية والطبية", dept:"تقنيات صحة المجتمع", fee:2000000,
-    tracks:[{name:"علمي / احيائي", morning:69.5, evening:64.5}]},
-  {college:"كلية التقنيات الصحية والطبية", dept:"تقنيات الأشعة", fee:1500000,
-    tracks:[{name:"علمي / احيائي", morning:69.5, evening:64.5}]},
-  {college:"كلية التقنيات الصحية والطبية", dept:"تقنيات المختبرات الطبية", fee:1500000,
-    tracks:[{name:"علمي / احيائي", morning:69.5, evening:64.5}]},
-  {college:"كلية التقنيات الصحية والطبية", dept:"تقنيات العناية بالقلب", fee:2500000,
-    tracks:[{name:"علمي / احيائي", morning:64.5, evening:64.5}]},
-  {college:"كلية التقنيات الصحية والطبية", dept:"تقنيات العقم والإنجاب", fee:2500000,
-    tracks:[{name:"علمي / احيائي", morning:64.5, evening:64.5}]},
-  {college:"كلية التقنيات الصحية والطبية", dept:"تقنيات طب الطواري", fee:2500000,
-    tracks:[{name:"علمي / احيائي", morning:64.5, evening:64.5}]},
-  {college:"كلية التقنيات الصحية والطبية", dept:"الإدارة الصحية", fee:2000000,
-    tracks:[{name:"علمي / احيائي", morning:64.5, evening:64.5}]},
+    channels:[
+      {label:"التربية", detail:"علمي، احيائي", morning:69.5, evening:64.5}
+    ]},
+  {college:"كلية التقنيات الصحية والطبية", dept:"تقنيات الاشعة", fee:2500000,
+    channels:[
+      {label:"التربية", detail:"علمي، احيائي", morning:69.5, evening:64.5}
+    ]},
+  {college:"كلية التقنيات الصحية والطبية", dept:"تقنيات المختبرات الطبية", fee:2500000,
+    channels:[
+      {label:"التربية", detail:"علمي، احيائي", morning:69.5, evening:64.5}
+    ]},
+  {college:"كلية التقنيات الصحية والطبية", dept:"تقنيات عناية بالقلب", fee:2500000,
+    channels:[
+      {label:"التربية", detail:"علمي، احيائي", morning:69.5, evening:null}
+    ]},
+  {college:"كلية التقنيات الصحية والطبية", dept:"تقنيات العقم والانجاب", fee:2500000,
+    channels:[
+      {label:"التربية", detail:"علمي، احيائي", morning:69.5, evening:null}
+    ]},
+  {college:"كلية التقنيات الصحية والطبية", dept:"تقنيات طب الطوارئ", fee:2500000,
+    channels:[
+      {label:"التربية", detail:"علمي، احيائي", morning:69.5, evening:null}
+    ]},
+  {college:"كلية التقنيات الصحية والطبية", dept:"الادارة الصحية", fee:2000000,
+    channels:[
+      {label:"التربية", detail:"علمي، احيائي", morning:69.5, evening:null}
+    ]},
   {college:"كلية التقنيات الصحية والطبية", dept:"العلاج الطبيعي", fee:2000000,
-    tracks:[{name:"احيائي / علمي", morning:64.5, evening:64.5}]},
-  {college:"كلية العلوم", dept:"علوم الأدلة الجنائية", fee:2500000,
-    tracks:[{name:"احيائي / علمي / تطبيقي", morning:56.5, evening:54.5}]},
+    channels:[
+      {label:"التربية", detail:"احيائي، علمي", morning:69.5, evening:null}
+    ]},
+  {college:"كلية العلوم", dept:"علوم الادلة الجنائية", fee:2500000,
+    channels:[
+      {label:"التربية", detail:"احيائي، علمي، تطبيقي", morning:56.5, evening:54.5}
+    ]},
   {college:"كلية العلوم", dept:"علوم الفيزياء الطبية", fee:2000000,
-    tracks:[{name:"احيائي / علمي / تطبيقي", morning:56.5, evening:54.5}]},
+    channels:[
+      {label:"التربية", detail:"احيائي، علمي، تطبيقي", morning:56.5, evening:54.5}
+    ]},
   {college:"كلية العلوم", dept:"علوم الحياة", fee:2000000,
-    tracks:[{name:"احيائي / علمي / تطبيقي", morning:56.5, evening:54.5}]},
+    channels:[
+      {label:"التربية / معهد المعلمين", detail:"احيائي، علمي، تطبيقي / علوم رياضيات / علوم", morning:56.5, evening:54.5}
+    ]},
   {college:"كلية العلوم", dept:"علوم التحليلات المرضية", fee:2000000,
-    tracks:[{name:"احيائي / علمي / تطبيقي", morning:56.5, evening:54.5}]},
-  {college:"كلية العلوم", dept:"علوم الأمن السيبراني", fee:2000000,
-    tracks:[{name:"احيائي / علمي / تطبيقي", morning:56.5, evening:54.5}]},
-  {college:"كلية العلوم", dept:"علوم الانظمة الطبية الذكية", fee:2000000,
-    tracks:[{name:"احيائي / علمي / تطبيقي", morning:56.5, evening:54.5}]},
-  {college:"كلية الهندسة", dept:"هندسة الأمن السيبراني", fee:2500000,
-    tracks:[{name:"احيائي / علمي / تطبيقي", morning:60.5, evening:59.5}]},
+    channels:[
+      {label:"التربية", detail:"احيائي، علمي", morning:56.5, evening:null}
+    ]},
+  {college:"كلية العلوم", dept:"علوم الامن السيبراني", fee:2000000,
+    channels:[
+      {label:"التربية", detail:"احيائي، علمي، تطبيقي", morning:56.5, evening:null}
+    ]},
+  {college:"كلية العلوم", dept:"علوم الانظمة الذكية", fee:2000000,
+    channels:[
+      {label:"التربية", detail:"احيائي / علمي / تطبيقي", morning:56.5, evening:null}
+    ]},
+  {college:"كلية الهندسة", dept:"هندسة الامن السيبراني", fee:2500000,
+    channels:[
+      {label:"التربية", detail:"احيائي، علمي، تطبيقي", morning:60.5, evening:59.5}
+    ]},
   {college:"كلية الهندسة", dept:"هندسة مدني", fee:2250000,
-    tracks:[{name:"علمي / تطبيقي", morning:62.5, evening:59.5}]},
+    channels:[
+      {label:"التربية", detail:"علمي، تطبيقي", morning:62.5, evening:null}
+    ]},
   {college:"كلية الهندسة", dept:"هندسة العمارة", fee:2000000,
-    tracks:[{name:"تطبيقي / علمي", morning:59.5, evening:58.5}]},
+    channels:[
+      {label:"التربية", detail:"تطبيقي، علمي", morning:68.5, evening:null}
+    ]},
   {college:"كلية الهندسة", dept:"هندسة الذكاء الاصطناعي", fee:2250000,
-    tracks:[{name:"احيائي / علمي / تطبيقي", morning:60.5, evening:59.5}]},
+    channels:[
+      {label:"التربية", detail:"احيائي، علمي، تطبيقي", morning:60.5, evening:null}
+    ]},
   {college:"كلية الهندسة", dept:"هندسة الليزر والالكترونيات البصرية", fee:2250000,
-    tracks:[{name:"احيائي / علمي / تطبيقي", morning:60.5, evening:59.5}]},
+    channels:[
+      {label:"التربية", detail:"احيائي، علمي، تطبيقي", morning:60.5, evening:59.5}
+    ]},
   {college:"كلية الهندسة", dept:"هندسة الطب الحياتي", fee:2000000,
-    tracks:[{name:"احيائي / علمي / تطبيقي", morning:70.5, evening:59.5}]},
+    channels:[
+      {label:"التربية", detail:"احيائي، علمي، تطبيقي", morning:70.5, evening:59.5}
+    ]},
   {college:"كلية الهندسة", dept:"هندسة الاتصالات", fee:2000000,
-    tracks:[{name:"احيائي / تطبيقي / علمي", morning:60.5, evening:59.5}]},
+    channels:[
+      {label:"التربية", detail:"احيائي، تطبيقي، علمي", morning:60.5, evening:null}
+    ]},
   {college:"كلية الهندسة", dept:"هندسة تكرار النفط والغاز", fee:2250000,
-    tracks:[{name:"احيائي / علمي / تطبيقي", morning:70.5, evening:59.5}]},
+    channels:[
+      {label:"التربية", detail:"احيائي، علمي، تطبيقي", morning:71.0, evening:null}
+    ]},
   {college:"كلية الفنون الجميلة", dept:"التصميم الداخلي", fee:1500000,
-    tracks:[{name:"معهد الفنون الجميلة / اعدادية الفنون / الفنون التطبيقية", morning:50.0, evening:null}]},
+    channels:[
+      {label:"التربية", detail:"علمي، احيائي، تطبيقي، ادبي", morning:50.0, evening:50.0},
+      {label:"صناعة + تجارة + زراعة", detail:"كافة الاختصاصات", morning:50.0, evening:50.0},
+      {label:"معهد الفنون الجميلة", detail:"التصميم، خط العربي وزخرفة", morning:50.0, evening:50.0},
+      {label:"اعدادية الفنون", detail:"فرع الفنون + مفوضي الشرطة / الفنون التطبيقية: تقنيات التصميم والتزيين المعماري، تقنيات الخط والزخرفة، تقنيات الخزف، صناعة الملابس، التصميم الطباعي، تصميم الاقمشة، فن التربية الاسرية، فن الديكور، العام + المهن المنزلية + معهد الحرف والفنون الشعبية", morning:50.0, evening:50.0}
+    ]},
 ];
 
 /* ===================== RENDER LOGIC ===================== */
@@ -422,13 +548,14 @@ const TRACK_ALIASES = {
   'ادبي': ['ادبي'],
   'احيائي': ['احيائي'],
   'علمي': ['علمي'],
-  'تطبيقي': ['تطبيقي'],
+  'طبيقي': ['طبيقي'],
   'معهد اعداد المعلمين': ['معهد اعداد المعلمين', 'معهد المعلمين'],
-  'مفوضية الشرطة': ['مفوضية الشرطة', 'خريجي مفوضية الشرطة', 'خريجو مفوضية الشرطة']
+  'مفوضية الشرطة': ['مفوضية الشرطة', 'خريجي مفوضية الشرطة']
 };
-function trackMatches(trackName, selected){
+function channelText(c){ return c.label + ' ' + c.detail; }
+function trackMatches(c, selected){
   if(selected === 'all') return true;
-  const normTrack = normalizeAr(trackName);
+  const normTrack = normalizeAr(channelText(c));
   const aliases = TRACK_ALIASES[selected] || [selected];
   return aliases.some(a => normTrack.includes(normalizeAr(a)));
 }
@@ -452,43 +579,38 @@ const SPEC_ALIASES = {
   'نسيج': ['نسيج', 'غزل'],
   'مراكز التدريب المهني': ['مراكز التدريب المهني', 'معهد السكك']
 };
-function specMatches(trackName, selected){
+function specMatches(c, selected){
   if(selected === 'all') return true;
-  const normTrack = normalizeAr(trackName);
+  const normTrack = normalizeAr(channelText(c));
   const aliases = SPEC_ALIASES[selected] || [selected];
   return aliases.some(a => normTrack.includes(normalizeAr(a)));
 }
-function evalTrack(t, avg, dawam){
-  // returns {morningStatus, eveningStatus} each 'ok' | 'no' | 'na'
-  function status(min){
-    if(min === null || min === undefined) return 'na';
-    if(avg === null) return 'na';
-    return avg >= min ? 'ok' : 'no';
-  }
-  return { m: status(t.morning), e: status(t.evening) };
-}
 
+function evalStatus(min, avg){
+  if(min === null || min === undefined) return 'na';
+  if(avg === null) return 'na';
+  return avg >= min ? 'ok' : 'no';
+}
 function pillHtml(label, min, stat){
   const icon = stat === 'ok' ? '✔' : stat === 'no' ? '✘' : '—';
-  const cls = stat;
   const text = min === null || min === undefined
     ? `${label}: غير منشور`
     : `${label}: حد أدنى ${min}`;
-  return `<span class="pill ${cls}">${icon} ${text}</span>`;
+  return `<span class="pill ${stat}">${icon} ${text}</span>`;
 }
 
-function buildCopyText(dep){
+function buildCopyText(dep, channels){
   let lines = [];
   lines.push('جامعة المأمون University Al-Mamoon');
   lines.push('الكلية: ' + dep.college);
   lines.push('القسم: ' + dep.dept);
   lines.push('القسط الداخلي: ' + fmtFee(dep.fee));
   lines.push('');
-  lines.push('تفاصيل القبول:');
-  dep.tracks.forEach(t => {
-    lines.push('• ' + t.name);
-    lines.push('   صباحي: ' + (t.morning !== null && t.morning !== undefined ? ('حد أدنى ' + t.morning) : 'غير منشور'));
-    lines.push('   مسائي: ' + (t.evening !== null && t.evening !== undefined ? ('حد أدنى ' + t.evening) : 'غير منشور'));
+  lines.push('قنوات القبول:');
+  channels.forEach(c => {
+    lines.push('• ' + c.label + (c.detail ? ': ' + c.detail : ''));
+    lines.push('   صباحي: ' + (c.morning !== null ? ('حد أدنى ' + c.morning) : 'غير منشور'));
+    lines.push('   مسائي: ' + (c.evening !== null ? ('حد أدنى ' + c.evening) : 'غير منشور'));
   });
   return lines.join('\n');
 }
@@ -524,44 +646,42 @@ function runSearch(){
   results.innerHTML = '';
   window._copyTexts = [];
 
-  // group by college in original order
   const colleges = [...new Set(DATA.map(d => d.college))];
   let totalEligible = 0;
   let totalDisplayed = 0;
   let anyCard = false;
 
   colleges.forEach(college => {
-    if(q && !college.includes(q) && !DATA.some(d => d.college === college && d.dept.includes(q))) return;
     const depts = DATA.filter(d => d.college === college && (!q || d.dept.includes(q) || d.college.includes(q)));
     const cardsHtml = [];
 
     depts.forEach(dep => {
-      const relevantTracks = dep.tracks.filter(t => trackMatches(t.name, track) && specMatches(t.name, subspec));
-      if(relevantTracks.length === 0) return;
+      const relevantChannels = dep.channels.filter(c => trackMatches(c, track) && specMatches(c, subspec));
+      if(relevantChannels.length === 0) return;
 
       let deptEligible = false;
-      let trackBlocks = '';
+      let channelsHtml = '';
+      let showMorning = dawam !== 'evening';
+      let showEvening = dawam !== 'morning';
 
-      relevantTracks.forEach(t => {
-        const { m, e } = evalTrack(t, avg, dawam);
-        let showMorning = dawam !== 'evening';
-        let showEvening = dawam !== 'morning';
-        if((showMorning && m === 'ok') || (showEvening && e === 'ok')) deptEligible = true;
+      relevantChannels.forEach(c => {
+        const mStat = evalStatus(c.morning, avg);
+        const eStat = evalStatus(c.evening, avg);
+        if((showMorning && mStat === 'ok') || (showEvening && eStat === 'ok')) deptEligible = true;
 
-        trackBlocks += `<div class="track-note">${t.name}</div><div class="status-line">`;
-        if(showMorning) trackBlocks += pillHtml('صباحي', t.morning, m);
-        if(showEvening) trackBlocks += pillHtml('مسائي', t.evening, e);
-        trackBlocks += `</div>`;
+        let pills = '<div class="status-line">';
+        if(showMorning) pills += pillHtml('صباحي', c.morning, mStat);
+        if(showEvening) pills += pillHtml('مسائي', c.evening, eStat);
+        pills += '</div>';
+
+        channelsHtml += `<div class="channel-block"><div class="channel-item"><b>${c.label}</b>${c.detail ? ': ' + c.detail : ''}</div>${pills}</div>`;
       });
 
-      if(avg !== null && !deptEligible) {
-        // still show but visually as not eligible — do not skip, let user see full picture
-      }
       if(deptEligible) totalEligible++;
       totalDisplayed++;
       anyCard = true;
       const copyIdx = window._copyTexts.length;
-      window._copyTexts.push(buildCopyText(dep));
+      window._copyTexts.push(buildCopyText(dep, relevantChannels));
       cardsHtml.push(`
         <div class="card ${deptEligible ? 'eligible' : ''}">
           <div class="card-head">
@@ -569,7 +689,7 @@ function runSearch(){
             <button class="copy-btn" onclick="copyDeptInfo(${copyIdx}, this)" title="نسخ تفاصيل القبول">⧉ نسخ</button>
           </div>
           <div class="row"><span>القسط الداخلي</span><b class="fee">${fmtFee(dep.fee)}</b></div>
-          ${trackBlocks}
+          <div class="channels-list">${channelsHtml}</div>
         </div>
       `);
     });
@@ -590,7 +710,6 @@ function runSearch(){
   }
 }
 
-// initial render (all departments, no filter)
 runSearch();
 </script>
 
