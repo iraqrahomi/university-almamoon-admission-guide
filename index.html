@@ -5,42 +5,49 @@
 <meta name="author" content="عبدالرحمن ابراهيم">
 <meta name="description" content="استعلام القبول في كلية المأمون الجامعة 2027 حسب القسم والمعدل">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8E%93%3C/text%3E%3C/svg%3E">
+<meta name="theme-color" content="#1a1740">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>استعلام القبول – جامعة المأمون 2027</title>
 <style>
-:root{--bg:#f5f6f2;--card:#fff;--tx:#1b2a24;--mu:#66756d;--pr:#1f6f4a;--pl:#e3f1ea;--bd:#dde3de;--ok:#1f6f4a;--no:#b3402f;--wa:#f2f0e4;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#121815;--card:#1b2420;--tx:#e8efe9;--mu:#92a39a;--pr:#5cc592;--pl:#223a2e;--bd:#2c3a33;--ok:#5cc592;--no:#ee8a77;--wa:#262a1f}}
-:root[data-theme="dark"]{--bg:#121815;--card:#1b2420;--tx:#e8efe9;--mu:#92a39a;--pr:#5cc592;--pl:#223a2e;--bd:#2c3a33;--ok:#5cc592;--no:#ee8a77;--wa:#262a1f}
+:root{color-scheme:dark;--bg:#1a1740;--bg2:#241f55;--card:#2b2765;--pill:#39357f;--tx:#fff;--mu:#bdb9e6;--pr:#f39c3c;--pl:#3a3472;--bd:#4b46926b;--ok:#7fe0a0;--no:#ff9a9a;--wa:#332e6e;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--tx);font-family:"Segoe UI",Tahoma,"Noto Naskh Arabic",Arial,sans-serif;line-height:1.6}
-header{padding:18px 14px 6px;max-width:760px;margin:auto}
-h1{font-size:20px;margin:0}header p{margin:2px 0 0;color:var(--mu);font-size:13px}
-.f{position:sticky;top:env(safe-area-inset-top,0px);background:var(--bg);padding:10px 14px;max-width:760px;margin:auto;z-index:5;display:grid;gap:8px;grid-template-columns:1fr 1fr}
-.f input,.f select{width:100%;padding:11px 12px;border:1px solid var(--bd);border-radius:10px;background:var(--card);color:var(--tx);font:inherit;font-size:15px}
-.f .s{grid-column:1/-1}
+body{margin:0;background:var(--bg);background-image:linear-gradient(180deg,#1a1740 0,#241f55 100%);background-attachment:fixed;color:var(--tx);font-family:"Segoe UI",Tahoma,"Noto Naskh Arabic",Arial,sans-serif;line-height:1.6}
+.cr{background:var(--pr);color:#1a1740;text-align:center;padding:9px 12px;font-size:13px;font-weight:700;line-height:1.7}
+header{padding:16px 14px 6px;max-width:760px;margin:auto}
+.hd{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.brand{font-family:Arial,Helvetica,sans-serif;font-weight:800;letter-spacing:1px;font-size:15px;direction:ltr;text-align:right}.brand span{color:var(--pr);font-weight:400}
+h1{font-size:21px;margin:2px 0 0}h1 b{color:var(--pr)}header p{margin:2px 0 0;color:var(--mu);font-size:13px}
+.nb{background:var(--pr);color:#1a1740;border:0;padding:9px 12px;border-radius:12px;font:inherit;font-weight:800;font-size:13px;cursor:pointer;white-space:nowrap}
+.f{position:sticky;top:env(safe-area-inset-top,0px);background:linear-gradient(180deg,#1c1943 70%,#1c194300);padding:10px 14px;max-width:760px;margin:auto;z-index:5;display:grid;gap:8px;grid-template-columns:1fr 1fr}
+.f input,.f select{width:100%;padding:11px 12px;border:1px solid #5a55a8;border-radius:12px;background:var(--pill);color:var(--tx);font:inherit;font-size:15px}
+.f input::placeholder{color:#a9a5dc}.f .s{grid-column:1/-1}
+.f input[type=checkbox]{accent-color:var(--pr)}
 main{max-width:760px;margin:auto;padding:4px 14px 40px}
-.cnt{color:var(--mu);font-size:13px;margin:4px 2px 8px}
-.c{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:13px;margin-bottom:10px}
+.cnt{color:var(--pr);font-size:13px;font-weight:700;margin:4px 2px 8px}
+.c{background:var(--card);border:1px solid #4b4692;border-radius:16px;padding:13px;margin-bottom:11px;border-inline-start:5px solid var(--pr)}
 .h{display:flex;justify-content:space-between;gap:8px;align-items:flex-start}
-.w{background:#fff3cd33;border:1px solid #d9a40655;border-radius:8px;padding:6px 9px;margin-top:8px;font-size:12px;color:var(--mu)}.cr{background:var(--pr);color:#fff;text-align:center;padding:9px 12px;font-size:13px;font-weight:600;line-height:1.7}@media(prefers-color-scheme:dark){:root:not([data-theme="light"]) .cr{color:#0d1a13}}.b.save{box-shadow:0 0 0 2px var(--ok)}.rs{background:var(--pl);color:var(--ok);border-radius:8px;padding:5px 9px;margin-top:6px;font-size:12px;font-weight:700}.fee small{display:block;font-weight:400;font-size:10px;color:var(--mu);margin-top:2px}.hd{display:flex;justify-content:space-between;align-items:center;gap:10px}.nb{background:var(--pr);color:#fff;border:0;padding:9px 12px;border-radius:10px;font:inherit;font-weight:700;font-size:13px;cursor:pointer;white-space:nowrap}@media(prefers-color-scheme:dark){:root:not([data-theme="light"]) .nb{color:#0d1a13}}.n{font-weight:700;font-size:16px}.col{font-size:12px;color:var(--mu)}
-.fee{font-size:12px;background:var(--pl);color:var(--pr);padding:3px 9px;border-radius:99px;white-space:nowrap;font-weight:600}
-.t{border-top:1px dashed var(--bd);margin-top:10px;padding-top:9px}
+.n{font-weight:800;font-size:16px}.col{font-size:12px;color:var(--mu)}.col:before{content:"■ ";color:var(--pr);font-size:9px}
+.fee{font-size:13px;background:var(--pill);color:#fff;padding:4px 11px;border-radius:12px;white-space:nowrap;font-weight:800;border:1px solid #5a55a8;text-align:center}
+.fee small{display:block;font-weight:400;font-size:10px;color:var(--mu);margin-top:2px}
+.t{border-top:1px dashed #5a55a8;margin-top:10px;padding-top:9px}
 .tt{font-size:13px;font-weight:700;display:flex;flex-wrap:wrap;gap:5px;align-items:center}
-.tag{font-size:11px;background:var(--wa);border:1px solid var(--bd);padding:1px 7px;border-radius:6px;font-weight:500}
-.d{background:var(--wa);border-radius:8px;padding:7px 9px;margin:6px 0;font-size:13px}
-.d b{color:var(--pr)}
+.tag{font-size:11px;background:var(--pill);border:1px solid #5a55a8;padding:1px 8px;border-radius:99px;font-weight:500;color:#fff}
+.d{background:var(--wa);border-radius:10px;padding:7px 9px;margin:6px 0;font-size:13px}.d b{color:var(--pr)}
 .r{display:flex;gap:8px;margin-top:6px}
-.b{flex:1;border:1px solid var(--bd);border-radius:10px;padding:6px 8px;text-align:center}
-.b small{display:block;color:var(--mu);font-size:11px}.b strong{font-size:19px}
-.b.ok{border-color:var(--ok);background:var(--pl)}.b.no{opacity:.55}
+.b{flex:1;border:1px solid #5a55a8;background:var(--pill);border-radius:12px;padding:6px 8px;text-align:center}
+.b small{display:block;color:var(--mu);font-size:11px}.b strong{font-size:20px;color:var(--pr)}
+.b.ok{border-color:var(--ok);background:#1f4a45}.b.ok strong{color:#fff}.b.no{opacity:.6}
+.b.save{box-shadow:0 0 0 2px var(--ok)}
 .st{font-size:11px;font-weight:700}.ok .st{color:var(--ok)}.no .st{color:var(--no)}
+.rs{background:#1f4a45;color:var(--ok);border-radius:10px;padding:5px 9px;margin-top:6px;font-size:12px;font-weight:700}
+.w{background:#f39c3c1f;border:1px solid #f39c3c66;border-radius:10px;padding:6px 9px;margin-top:8px;font-size:12px;color:#ffe2bd}
 .none{text-align:center;color:var(--mu);padding:30px 0}
 .note{font-size:11px;color:var(--mu);margin-top:16px}
 </style>
 </head>
 <body>
 <div class="cr">حقوق التصميم: عبدالرحمن ابراهيم — قسم هندسة أمن سيبراني</div>
-<header class="hd"><div><h1>🎓 استعلام القبول – جامعة المأمون الأهلية</h1><p>الدراسة الصباحية والمسائية · العام الدراسي 2027</p></div><button class="nb" id="nw" type="button">استعلام جديد 🔄</button></header>
+<header class="hd"><div><div class="brand">ALMA'MOON <span>UNIVERSITY</span></div><h1>استعلام القبول <b>2027</b> – جامعة المأمون</h1><p>الدراسة الصباحية والمسائية · العام الدراسي 2027</p></div><button class="nb" id="nw" type="button">استعلام جديد 🔄</button></header>
 <div class="f">
 <input class="s" id="q" type="search" placeholder="ابحث عن قسم أو كلية…">
 <select id="col"><option value="">كل الكليات</option></select>
@@ -53,11 +60,11 @@ main{max-width:760px;margin:auto;padding:4px 14px 40px}
 <div class="f" style="padding-top:0"><label class="s" style="display:flex;gap:8px;align-items:center;font-size:14px"><input type="checkbox" id="only" style="width:auto"> اعرض الأقسام المتاحة لمعدلي فقط (اكتب المعدل أعلاه)</label></div>
 <main><div class="cnt" id="cnt"></div><div id="out"></div>
 <p class="note" style="text-align:center">حقوق التصميم: عبدالرحمن ابراهيم — قسم هندسة أمن سيبراني</p>
-<p class="note">الدفعتان وأربع دفعات تقسيم حسابي للأجر فقط، ونظام الدفع الفعلي تحدده الجامعة. المعدلات والأجور منقولة من جدول الجامعة (19-9). الأجور بالدينار العراقي. يُرجى مراجعة الجامعة للتأكد قبل التقديم.</p></main>
+<p class="note">الدفعتان وأربع دفعات تقسيم حسابي للأجر فقط، ونظام الدفع الفعلي تحدده الجامعة. المعدلات منقولة من جدول الجامعة (19-9)، والأجور معتمدة من الكتيّب المطبوع للجامعة. الأجور بالدينار العراقي. يُرجى مراجعة الجامعة للتأكد قبل التقديم.</p></main>
 <script>
 const A=['علمي','أحيائي','تطبيقي','أدبي'],S=['علمي','أحيائي','تطبيقي'],T=(t,b,am,pm,d)=>({t,b,am,pm,d});
 const E=(am,pm)=>[T('التربية',A,am,pm)];
-const CL=['طب الأسنان','الصيدلة','الإعلام','الآداب','القانون','العلوم السياسية','التربية','التربية البدنية وعلوم الرياضة','التقنيات الهندسية','الإدارة والاقتصاد','التقنيات الصحية والطبية','العلوم','الهندسة','الفنون الجميلة','غير محددة في الملف'];
+const CL=['طب الأسنان','الصيدلة','الإعلام','الآداب','القانون والعلوم السياسية','القانون والعلوم السياسية','التربية','التربية البدنية وعلوم الرياضة','التقنيات الهندسية','الإدارة والاقتصاد','التقنيات الصحية والطبية','العلوم','الهندسة','الفنون الجميلة','غير محددة في الملف'];
 const TM=(ts,e)=>T('مراكز التدريب المهني / معهد السكك',null,64.5,61.5,'خريجو مراكز التدريب المهني / معهد السكك (الدراسة فيها 3 سنوات) ممّن أدّوا الامتحان الوزاري في الاختصاص المناظر'+(e||''));
 const D=[
 [0,'طب الأسنان',5000000,[T('التربية',['علمي','أحيائي'],89.5,null)]],
@@ -65,7 +72,7 @@ const D=[
 [2,'الإعلام الرقمي',1250000,[T('التربية',A,53.5,51.5),T('الصناعي',null,53.5,51.5,'تكنولوجيا الإعلام'),T('إعدادية الفنون',null,53.5,51.5,'فرع الفنون'),T('باقي التخصصات',null,53.5,51.5,'قناة الصحفيين')]],
 [3,'علم النفس السريري',2000000,[T('التربية',A,54.5,52.5),T('إعدادية إسلامية',null,54.5,52.5,'الإعداديات الإسلامية التابعة لوزارة التربية (صباحي + مسائي) والإعداديات التابعة للوقفين ممّن أدّوا الامتحان التقويمي فقط'),T('إعدادية الفنون',null,54.5,52.5,'فرع الفنون')]],
 [4,'القانون',1750000,E(67.5,64.5)],
-[5,'العلوم السياسية والعلاقات الدولية والدبلوماسية',1500000,E(59.5,57.5)],
+[4,'العلوم السياسية والعلاقات الدولية والدبلوماسية',1500000,E(59.5,57.5)],
 [6,'اللغة الإنكليزية',1750000,[T('التربية',A,54.5,52.5),T('معهد إعداد المعلمين',null,54.5,52.5,'اللغة الإنكليزية فقط')]],
 [6,'تربية الرياضيات',1750000,[T('التربية',S,54.5,52.5),T('معهد إعداد المعلمين',null,54.5,52.5,'علوم الرياضيات / العلوم')]],
 [6,'اللغة العربية',1250000,[T('التربية',A,54.5,52.5),T('معهد إعداد المعلمين وغيره',null,54.5,52.5,'معهد إعداد المعلمين (اللغة العربية، التربية الإسلامية واللغة العربية، لغة عربية واجتماعيات) + الإعداديات الإسلامية التابعة للتربية الإسلامية (صباحي ومسائي) + الإعداديات الإسلامية التابعة للوقفين (ممّن أدّوا الامتحان التقويمي فقط)')]],
@@ -79,9 +86,9 @@ const D=[
 [8,'هندسة تقنيات ميكانيك القوى',2000000,[T('التربية',S,62.5,59.5),T('الصناعي',null,64.5,61.5,'تكنولوجيا صناعية، التكملة، ميكاترونكس سيارات، خزف وزجاج، معالجة المياه وشبكاتها، طباعة، النسيج، تكييف الهواء والتثليج، سيارات، نجارة، لحام وتشكيل معادن، صيانة المصاعد الكهربائية، مكننة زراعية، ميكانيك، أدوات، تجميع مكائن، تشغيل، خراطة، قاطرات، قوى، فريزة، محركات، تدفئة، معادن، مكائن ومعدات، مضخات وتوربينات، إنتاج، تبريد وتكييف، نماذج، غزل، سباكة، تكنولوجيا سباكة'),T('خريجو مراكز التدريب المهني / معاهد السكك',null,64.5,61.5,'معاهد السكك التي مدة الدراسة فيها 3 سنوات ممّن أدّوا الامتحان الوزاري في الاختصاص المناظر')]],
 [9,'إدارة الأعمال',1750000,E(57.5,54.5)],[9,'المحاسبة',1750000,E(57.5,54.5)],[9,'العلوم المالية والمصرفية',1500000,E(57.5,54.5)],[9,'اقتصاديات النفط والغاز',1750000,E(57.5,54.5)],
 [9,'التدقيق والرقابة الداخلية',1500000,[T('التربية',A,57.5,null)]],
-...[['تقنيات التخدير',2750000],['تقنيات البصريات',2000000],['تقنيات الكلية الصناعية',2000000],['تقنيات صحة المجتمع',2000000],['تقنيات الأشعة',2500000],['تقنيات المختبرات الطبية',2500000],['تقنيات عناية بالقلب',2500000],['تقنيات العقم والإنجاب',2500000],['تقنيات طب الطوارئ',2500000],['العلاج الطبيعي',2000000]].map(x=>[10,x[0],x[1],[T('التربية',['علمي','أحيائي'],69.5,64.5)]]),
-[11,'علوم الأدلة الجنائية',2500000,[T('التربية',S,59.5,57.5)]],[11,'علوم الفيزياء الطبية',2000000,[T('التربية',S,59.5,57.5)]],[11,'علوم الحياة',2000000,[T('التربية',S,59.5,57.5)]],[11,'علوم التحليلات المرضية',2250000,[T('التربية',S,59.5,57.5)]],[11,'علوم الأمن السيبراني',2000000,[T('التربية',S,59.5,57.5)]],
-[12,'هندسة الأمن السيبراني',2500000,[T('التربية',S,64.5,61.5)]],[12,'هندسة مدني',2250000,[T('التربية',['علمي','تطبيقي'],64.5,61.5)]],[12,'هندسة العمارة',3250000,[T('التربية',['علمي','تطبيقي'],64.5,61.5)]],[12,'هندسة الذكاء الاصطناعي',2250000,[T('التربية',S,64.5,61.5)]],[12,'هندسة الليزر والإلكترونيات البصرية',2250000,[T('التربية',S,64.5,61.5)]],[12,'هندسة الطب الحياتي',2000000,[T('التربية',S,64.5,61.5)]],[12,'هندسة الاتصالات',2000000,[T('التربية',S,64.5,61.5)]],[12,'هندسة تكرار النفط والغاز',2250000,[T('التربية',S,64.5,61.5)]],
+...[['تقنيات التخدير',2750000],['تقنيات البصريات',1500000],['تقنيات الكلية الصناعية (الديلزة)',1500000],['تقنيات صحة المجتمع',2000000],['تقنيات الأشعة',2500000],['تقنيات المختبرات الطبية',2500000],['تقنيات عناية بالقلب',2500000],['تقنيات العقم والإنجاب',2500000],['تقنيات طب الطوارئ',2500000],['تقنيات العلاج الطبيعي والتأهيل الطبي',2500000]].map(x=>[10,x[0],x[1],[T('التربية',['علمي','أحيائي'],69.5,64.5)]]),
+[11,'علوم الأدلة الجنائية',2500000,[T('التربية',S,59.5,57.5)]],[11,'علوم الفيزياء الطبية',2000000,[T('التربية',S,59.5,57.5)]],[11,'علوم الحياة',2000000,[T('التربية',S,59.5,57.5)]],[11,'علوم التحليلات المرضية',2000000,[T('التربية',S,59.5,57.5)]],[11,'علوم الأمن السيبراني',2000000,[T('التربية',S,59.5,57.5)]],
+[12,'هندسة الأمن السيبراني',2500000,[T('التربية',S,64.5,61.5)]],[12,'هندسة مدني',2250000,[T('التربية',['علمي','تطبيقي'],64.5,61.5)]],[12,'هندسة العمارة',2000000,[T('التربية',['علمي','تطبيقي'],64.5,61.5)]],[12,'هندسة الذكاء الاصطناعي',2250000,[T('التربية',S,64.5,61.5)]],[12,'هندسة الليزر والإلكترونيات البصرية',2250000,[T('التربية',S,64.5,61.5)]],[12,'هندسة الطب الحياتي',2000000,[T('التربية',S,64.5,61.5)]],[12,'هندسة الاتصالات',2000000,[T('التربية',S,64.5,61.5)]],[12,'هندسة تكرار النفط والغاز',2250000,[T('التربية',S,64.5,61.5)]],
 [13,'التصميم الداخلي',1500000,[T('التربية',A,50,50),T('معهد الحرف والفنون الشعبية',null,50,50),T('معهد الفنون الجميلة',null,50,50),T('إعدادية الفنون',null,50,50,'فرع الفنون'),T('الفنون التطبيقية',null,50,50,'فن التربية الأسرية، فن الديكور، عام')]],
 [10,'تقنيات الإدارة الصحية',2000000,[T('التربية',S,54.5,52.5)]]
 ];
@@ -97,7 +104,7 @@ const W={
 'علوم الحياة':'ℹ دليل الوزارة 2025-26 يقبل أيضًا خريجي معهد إعداد المعلمين (علوم/رياضيات).'
 };['إدارة الأعمال','المحاسبة','العلوم المالية والمصرفية','اقتصاديات النفط والغاز'].forEach(k=>W[k]='ℹ دليل الوزارة 2025-26 يقبل أيضًا خريجي الفرع التجاري لهذا القسم ولم يُذكر في ملف الجامعة.');
 const $=id=>document.getElementById(id),fm=n=>n.toLocaleString('en-US'),q=$('q'),col=$('col'),br=$('br'),sc=$('sc');
-CL.forEach((c,i)=>col.add(new Option('كلية '+c.replace(' (الاسم غير مكتوب في الملف)',''),i)));
+[...new Set(D.map(r=>r[0]))].sort((a,b)=>a-b).forEach(i=>col.add(new Option('كلية '+CL[i],i)));
 const norm=s=>s.replace(/[\u064B-\u0652\u0640]/g,'').replace(/[أإآٱ]/g,'ا').replace(/ى/g,'ي').replace(/ة/g,'ه').replace(/ؤ/g,'و').replace(/ئ/g,'ي').toLowerCase().replace(/[^\u0621-\u064Aa-z0-9\s]/g,' ');
 const wd=s=>norm(s).split(/\s+/).filter(Boolean).map(w=>w.length>3&&w.startsWith('ال')?w.slice(2):w);
 /* مرادفات: كلمات يكتبها الطالب ← كلمات تظهر في اسم القسم */
